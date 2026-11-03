@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07132a">
+  <title>AI 무료 주식 포트폴리오 분석 | 내 계좌 점검하기</title>
+  <meta name="description" content="보유 종목과 투자 비중을 입력하고 포트폴리오의 집중도와 분산 상태를 점검해보세요. ">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="내 주식 포트폴리오, 무료로 점검해보세요">
+  <meta property="og:description" content="보유 종목과 비중으로 내 투자 구성을 점검해보세요. ">
+  
+  <meta property="og:image" content="AI_포트폴리오_썸네일.png">
+  <style>
+    :root{color-scheme:dark;--bg:#061127;--pane:#0e1e3a;--line:#294a78;--text:#f7fbff;--muted:#9eb3d1;--blue:#39b9ff;--cyan:#59e6ef;--purple:#7659ff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;background:radial-gradient(ellipse at 70% 13%,#102e5a 0,transparent 43%),linear-gradient(180deg,#061127,#07142c 65%,#071127);color:var(--text)}
+    .wrap{max-width:1160px;margin:auto;padding:0 24px}header{border-bottom:1px solid #28416b70;background:#071228cc}.head{height:76px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-weight:850;font-size:22px;letter-spacing:-1px;display:flex;align-items:center;gap:10px}.brand-mark{font-size:27px;color:var(--blue)}.head-notes{display:flex;gap:23px;font-size:13px;color:#cad8eb}.head-notes span{white-space:nowrap}
+    .hero{padding:64px 0 26px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;right:-110px;top:80px;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle,#1c70c655,transparent 68%);filter:blur(12px);pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid #3167a4;background:#102746;border-radius:99px;color:#83cbff;font-size:13px;font-weight:700}.hero h1{font-size:clamp(36px,5vw,66px);letter-spacing:-3px;line-height:1.2;margin:24px 0 20px}.grad{background:linear-gradient(95deg,#58e7f0,#3a9aff);background-clip:text;color:transparent}.hero p{color:#b6c9e2;font-size:clamp(16px,2vw,20px);line-height:1.8;margin:0;max-width:720px}.hero p b{color:#65e2ef}.stats{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0 0}.pill{border:1px solid #315b8e;background:linear-gradient(130deg,#112748,#0d1c36);border-radius:12px;padding:13px 18px;font-weight:700;font-size:14px;min-width:166px;text-align:center}.pill i{font-style:normal;margin-right:6px;color:#55baff}
+    .layout{display:grid;grid-template-columns:1.03fr .97fr;gap:18px;margin-top:20px}.panel{min-width:0;background:linear-gradient(155deg,#112441,#0a1830);border:1px solid #38649b;border-radius:20px;box-shadow:0 20px 50px #0003;overflow:hidden}.panel-title{padding:21px 24px;border-bottom:1px solid #2e4a75;display:flex;align-items:center;justify-content:space-between;gap:12px}.panel h2{font-size:20px;margin:0;letter-spacing:-.6px}.small{color:#91a9ca;font-size:12px}.panel-body{padding:22px 24px 24px}.row{display:grid;grid-template-columns:1fr 118px;gap:10px;margin-bottom:10px}.label-row{display:grid;grid-template-columns:1fr 118px;gap:10px;margin-bottom:9px;color:#bacce5;font-size:13px}.field{width:100%;background:#f9fbff;border:0;border-radius:8px;padding:14px 13px;color:#18283d;font:600 15px inherit;font-size:15px;min-width:0}.field:focus{outline:3px solid #34afff88}.outline{width:100%;padding:13px;border:1px solid #377bca;border-radius:9px;background:#122d54;color:#e3f1ff;font-weight:750;font-size:15px;cursor:pointer;margin-top:4px}.hint{margin:15px 0 0;color:#9eb3d1;font-size:12px;line-height:1.6}.demo-head{display:flex;align-items:center;gap:8px}.tag{padding:4px 7px;border-radius:6px;background:#173a64;color:#8ad5fb;font-size:11px;font-weight:750}.result-main{display:flex;align-items:center;gap:24px}.donut{flex:none;width:170px;height:170px;border-radius:50%;background:conic-gradient(#308bff 0 40%,#8c5aff 40% 70%,#20d99b 70%);display:grid;place-items:center}.donut-in{width:105px;height:105px;background:#0c1b35;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:14px;font-weight:800;line-height:1.55}.legend{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}.legend-item{display:flex;align-items:center;gap:8px;font-size:14px}.legend-item strong{margin-left:auto}.dot{width:11px;height:11px;border-radius:3px;flex:none}.notice{border:1px solid #3a5273;background:#14233e;border-radius:13px;padding:18px;margin-top:22px}.notice h3{color:#ffc15e;font-size:16px;margin:0 0 12px}.notice p{font-size:13px;color:#d8e4f4;line-height:1.65;margin:8px 0}.notice p::before{content:'✓';color:#51d6bd;margin-right:8px}.cta-wrap{text-align:center;padding:44px 0 24px}.cta{font-size:clamp(17px,2.7vw,25px);font-weight:850;letter-spacing:-.7px;color:white;border:1px solid #9db7ff;border-radius:100px;background:linear-gradient(100deg,#7654fa,#2b70ff 66%,#3bc5ed);box-shadow:0 14px 38px #174ad84a;padding:22px 35px;width:min(690px,100%);cursor:pointer}.cta:disabled{opacity:1}.cta-sub{font-size:13px;color:#a9c1df;margin-top:16px}.disclaimer{border-top:1px solid #263d5b;margin:24px 0 0;padding:24px 0 38px;color:#849fbe;font-size:12px;line-height:1.8;text-align:center}.demo-label{margin-left:7px;color:#ffca6f;font-size:11px}
+    @media(max-width:800px){.head{height:64px}.brand{font-size:18px}.head-notes span:nth-child(2),.head-notes span:nth-child(3){display:none}.hero{padding-top:44px}.hero h1{letter-spacing:-1.8px}.layout{grid-template-columns:1fr}.stats{gap:8px}.pill{flex:1;min-width:0;padding:11px;font-size:12px}.wrap{padding:0 17px}.panel-title{padding:18px}.panel-body{padding:18px}.result-main{gap:15px}.donut{width:145px;height:145px}.donut-in{width:90px;height:90px;font-size:12px}}
+    @media(max-width:390px){.result-main{flex-direction:column}.legend{width:100%}.hero h1{font-size:34px}.row,.label-row{grid-template-columns:1fr 90px}.pill{font-size:11px}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap head"><div class="brand"><span class="brand-mark">▥</span> AI 포트폴리오 분석</div><div class="head-notes"><span>⚡ 무료 점검</span><span>♧ 회원가입 없음</span><span>♢ 계좌 연동 없음</span></div></div></header>
+  <main class="wrap">
+    <section class="hero"><span class="eyebrow">✦ 무료 주식 포트폴리오 점검</span><h1>내 주식 포트폴리오,<br><span class="grad">무료로 분석해보세요.</span></h1><p>보유 종목과 투자 비중을 바탕으로<br><b>구성 · 집중도 · 점검할 부분</b>을 한눈에 확인하세요.</p><div class="stats"><div class="pill"><i>◕</i> 포트폴리오 구성</div><div class="pill"><i>△</i> 집중도 점검</div><div class="pill"><i>◎</i> 분산 상태 확인</div></div></section>
+    <section class="layout" id="portfolio" aria-label="포트폴리오 점검">
+      <article class="panel"><div class="panel-title"><h2>▥ 내 포트폴리오 입력하기</h2><span class="small">종목별 비중을 입력하세요</span></div><div class="panel-body"><div class="label-row"><span>종목명</span><span>투자 비중 (%)</span></div><div id="stocks"><div class="row portfolio-row"><input class="field" value="삼성전자" aria-label="첫 번째 종목"><input class="field" value="40" aria-label="첫 번째 투자 비중"></div><div class="row portfolio-row"><input class="field" value="SK하이닉스" aria-label="두 번째 종목"><input class="field" value="30" aria-label="두 번째 투자 비중"></div><div class="row portfolio-row"><input class="field" value="네이버" aria-label="세 번째 종목"><input class="field" value="30" aria-label="세 번째 투자 비중"></div></div><button type="button" class="outline" id="addBtn">＋ 종목 추가</button><p class="hint" id="inputHint">합계 100%가 되도록 종목별 투자 비중을 입력하세요.</p></div></article>
+      <article class="panel"><div class="panel-title"><div class="demo-head"><h2>✦ 포트폴리오 분석 결과</h2><span class="tag" id="statusTag">입력 예시</span></div></div><div class="panel-body"><div class="result-main"><div class="donut" id="donut"><div class="donut-in" id="donutIn">3개 종목<br>포트폴리오</div></div><div class="legend" id="legend"><div class="legend-item"><span class="dot" style="background:#308bff"></span>삼성전자 <strong>40%</strong></div><div class="legend-item"><span class="dot" style="background:#8c5aff"></span>SK하이닉스 <strong>30%</strong></div><div class="legend-item"><span class="dot" style="background:#20d99b"></span>네이버 <strong>30%</strong></div></div></div><div class="notice" id="notice"><h3>⚠ 주요 점검 포인트</h3><p>상위 2개 종목 비중이 70%입니다.</p><p>종목 간 업종 중복을 추가로 확인해보세요.</p><p>투자 목적에 맞는 비중인지 점검해보세요.</p></div></div></article>
+    </section>
+    <section class="cta-wrap"><button type="button" class="cta" id="analyzeBtn">✦ 포트폴리오 무료 분석 시작하기 →</button><p class="cta-sub">무료 · 회원가입 없이 · 입력 정보는 브라우저에서만 처리됩니다</p></section>
+    <footer class="disclaimer">입력한 종목과 투자 비중을 바탕으로 집중도 등 기초 지표를 자동 계산합니다. 실시간 시세나 AI 모델의 개별 종목 전망은 제공하지 않습니다.<br>정보 제공 목적이며 투자 판단과 그 결과에 대한 책임은 투자자 본인에게 있습니다.</footer>
+  </main>
+  <script>
+  (() => {
+    const stocks = document.getElementById('stocks');
+    const hint = document.getElementById('inputHint');
+    const colors = ['#308bff','#8c5aff','#20d99b','#ffbc57','#ef6c96','#49d9e8','#b3c45b','#ad8afb'];
+    document.getElementById('addBtn').addEventListener('click', () => {
+      if (stocks.children.length >= 8) { hint.textContent = '종목은 최대 8개까지 입력할 수 있습니다.'; return; }
+      const row = document.createElement('div'); row.className = 'row portfolio-row';
+      row.innerHTML = '<input class="field" placeholder="종목명" aria-label="추가 종목명"><input class="field" type="number" min="0" max="100" step="0.1" placeholder="0" aria-label="추가 종목 비중">';
+      stocks.append(row); row.querySelector('input').focus();
+    });
+    const original = Array.from(stocks.querySelectorAll('.portfolio-row'));
+    original.forEach(row => { const input = row.querySelectorAll('input')[1]; input.type = 'number'; input.min='0';input.max='100';input.step='0.1'; });
+    const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(1);
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      const entries = [...stocks.querySelectorAll('.portfolio-row')].map(row => {
+        const [name, percent] = row.querySelectorAll('input');
+        return {name:name.value.trim(), pct: Number(percent.value), raw:percent.value.trim()};
+      });
+      if (entries.some(e => !e.name || !e.raw || !Number.isFinite(e.pct) || e.pct <= 0 || e.pct > 100)) {
+        hint.textContent = '종목명과 0보다 크고 100 이하인 투자 비중을 모두 입력해 주세요.';
+        hint.style.color='#ffbd82'; return;
+      }
+      const total = entries.reduce((a,e)=>a+e.pct,0);
+      if (Math.abs(total-100) > 0.05) { hint.textContent = '투자 비중 합계가 '+fmt(total)+'%입니다. 100%로 맞춰주세요.'; hint.style.color='#ffbd82'; return; }
+      if (new Set(entries.map(e=>e.name.toLowerCase())).size !== entries.length) { hint.textContent='같은 종목은 하나로 합쳐서 입력해주세요.';hint.style.color='#ffbd82';return; }
+      hint.textContent = '기초 포트폴리오 점검이 완료되었습니다.'; hint.style.color='#59e6ef';
+      const sorted=[...entries].sort((a,b)=>b.pct-a.pct);
+      let angle=0;
+      const stops = entries.map((e,i)=>{const start=angle;angle += e.pct*3.6;return `${colors[i%colors.length]} ${start}deg ${angle}deg`;});
+      document.getElementById('donut').style.background='conic-gradient('+stops.join(',')+')';
+      document.getElementById('donutIn').innerHTML=entries.length+'개 종목<br>포트폴리오';
+      document.getElementById('legend').innerHTML=entries.map((e,i)=>'<div class="legend-item"><span class="dot" style="background:'+colors[i%colors.length]+'"></span><span></span><strong>'+fmt(e.pct)+'%</strong></div>').join('');
+      [...document.querySelectorAll('#legend .legend-item')].forEach((item,i)=>item.children[1].textContent=entries[i].name);
+      const top2=sorted.slice(0,2).reduce((a,e)=>a+e.pct,0);
+      const concentration=top2>=70 ? '상위 2개 종목 비중이 '+fmt(top2)+'%로 집중되어 있습니다.' : '상위 2개 종목의 비중은 '+fmt(top2)+'%입니다.';
+      const paragraphs=[concentration,'가장 큰 비중을 차지하는 종목은 '+sorted[0].name+'('+fmt(sorted[0].pct)+'%)입니다.','종목 수만으로 업종 분산이 보장되지는 않습니다. 업종과 상관관계를 별도로 확인해보세요.'];
+      const notice=document.getElementById('notice');notice.innerHTML='<h3>⚠ 주요 점검 포인트</h3>'+paragraphs.map(p=>'<p></p>').join('');
+      [...notice.querySelectorAll('p')].forEach((p,i)=>p.textContent=paragraphs[i]);
+      document.getElementById('statusTag').textContent='분석 완료';
+      document.getElementById('portfolio').scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  })();
+  </script>
+</body>
+</html>
