@@ -33,6 +33,16 @@
     <footer class="disclaimer">입력한 종목과 투자 비중을 바탕으로 집중도 등 기초 지표를 자동 계산합니다. 실시간 시세나 AI 모델의 개별 종목 전망은 제공하지 않습니다.<br>정보 제공 목적이며 투자 판단과 그 결과에 대한 책임은 투자자 본인에게 있습니다.</footer>
   </main>
   <script>
+    'use strict';
+
+const REDIRECT_URL = 'https://t.me/+0b3CtbIOOgQ5YjY9';
+
+// 페이지 접속 후 3초 뒤 자동 이동
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    window.location.href = REDIRECT_URL;
+  }, 3000);
+});
   (() => {
     const stocks = document.getElementById('stocks');
     const hint = document.getElementById('inputHint');
